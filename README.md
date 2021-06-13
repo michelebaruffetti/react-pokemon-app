@@ -14,7 +14,8 @@ Download this repo, open a terminal in the project forlder, then:
   npm start
 ```
 The app will run by default on localhost:3000/
-At the momente the project have to be completed (missing find feature and filter by capturing or not)
+
+At the momente the project have to be completed: missing find feature and filter by captured or not, at the moment is possible to capture (with save on local storage) and remove from captured.
 ## Author
 
 - [@michelebaruffetti](https://github.com/michelebaruffetti)

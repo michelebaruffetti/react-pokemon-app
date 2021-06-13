@@ -14,6 +14,7 @@ const Card = ({pokemon}) => {
             localPokemon.push(pokemon);
             localStorage.setItem('pokemonCatch', JSON.stringify(localPokemon));
             setSave(true);
+            console.log('pokemon catturato', save);
             console.log(JSON.parse(localStorage.getItem('pokemonCatch')));
 
         }else {
@@ -28,22 +29,35 @@ const Card = ({pokemon}) => {
                 localPokemon.push(pokemon);
                 localStorage.setItem('pokemonCatch', JSON.stringify(localPokemon));
                 setSave(true);
-                console.log(JSON.parse(localStorage.getItem('pokemonCatch')));
+                console.log('pokemon aggiunto', JSON.parse(localStorage.getItem('pokemonCatch')));
             }
         }
         
     };
 
-    useEffect(()=>{
-        const checkLocal = () => {
-            if (localStorage.getItem('pokemonCatch')){    
-                let localPokemon =JSON.parse(localStorage.getItem('pokemonCatch'));
-                if (localPokemon.some(e => e.id === pokemon.id)){
-                    console.log('pokemon già catturato');
-                    setSave(true);
-                }             
-            }
+    const unstorePokemonLocal = () => {
+        if (localStorage.getItem('pokemonCatch')){
+            let localPokemon =JSON.parse(localStorage.getItem('pokemonCatch'));
+            console.log(localPokemon);
+            const filteredPokemon = localPokemon.filter(el => el.id !== pokemon.id); 
+            localStorage.setItem('pokemonCatch', JSON.stringify(filteredPokemon));
+            setSave(false);
+            console.log('cattura annullata!', save);
+            console.log(JSON.parse(localStorage.getItem('pokemonCatch')));
         }
+    }
+
+    const checkLocal = () => {
+        if (localStorage.getItem('pokemonCatch')){    
+            let localPokemon =JSON.parse(localStorage.getItem('pokemonCatch'));
+            if (localPokemon.some(e => e.id === pokemon.id)){
+                console.log('pokemon già catturato');
+                setSave(true);
+            }             
+        }
+    }
+
+    useEffect(()=>{
         checkLocal();
     }, [])
 
@@ -77,7 +91,7 @@ const Card = ({pokemon}) => {
                     <div>
                         {/* {!open ? <button className="btn btn-default mt-2" onClick={()=>{setOpen(!open)}}>Mostra Caratteristiche</button> : null} */}
                     </div>
-                    {!save ? <button className="btn btn-default mt-2 bg-success text-white" onClick={()=>storePokemonLocal()}>cattura pokemon!</button> : <button className="btn btn-default mt-2 bg-danger text-white" >Pokemon catturato!</button>} 
+                    {!save ? <button className="btn btn-default mt-2 bg-success text-white" onClick={()=>storePokemonLocal()}>cattura pokemon!</button> : <button className="btn btn-default mt-2 bg-danger text-white" onClick={()=>unstorePokemonLocal()}>annulla cattura!</button>} 
                 </div>
             </div>
         </div>

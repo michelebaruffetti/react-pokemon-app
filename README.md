@@ -22,5 +22,5 @@ The app will run by default on localhost:3000/
 ## Preview Image
 
 
-
+<img src="preview.png">
   

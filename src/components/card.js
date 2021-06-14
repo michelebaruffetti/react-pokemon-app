@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './card.css';
 import typecolors from './typecolors';
 
-const Card = ({pokemon}) => {
+const Card = ({pokemon, cardState}) => {
 
     const [open, setOpen] = useState(false);
     const [save, setSave] = useState(false);
@@ -61,16 +61,24 @@ const Card = ({pokemon}) => {
         checkLocal();
     }, [])
 
+
+    const setWrapperCardStyle = () => {
+        return {
+            backgroundColor: open ? typecolors[pokemon.types[0].type.name] : null,
+            display: cardState === 'all' || (cardState === 'captured' && save) || (cardState === 'not-captured' && !save) ? 'block' : 'none'
+        }
+    }
+
     return (  
-        <div className={open ? "card-open btn" : "col-md-6 col-lg-4 mb-3"} style={open ? {backgroundColor: typecolors[pokemon.types[0].type.name]} : null }>
+        <div className={open ? "card-open btn" : "col-md-6 col-lg-4 mb-3"} style={setWrapperCardStyle()}>
             <div className={open ? "card-modal card m-0 border-dark btn" : "card m-0 border-dark btn"} onClick={()=>{setOpen(!open)}}>
                 <img className="card-img-top p-3" src={pokemon.sprites.other.dream_world.front_default} alt="pokemon sprite" style={{height: 15+'rem'}}></img>
                 <div className="card-body">
                     <h4 className="card-title">{pokemon.name.toUpperCase()}</h4>
                     <div className="card-type d-flex justify-content-center mb-2">
-                        {pokemon.types.map(type => {
+                        {pokemon.types.map((type, index) => {
                             return (
-                                <p className="card-text btn m-2 text-uppercase text-white" style={{ backgroundColor: typecolors[type.type.name] }}>
+                                <p key={index} className="card-text btn m-2 text-uppercase text-white" style={{ backgroundColor: typecolors[type.type.name] }}>
                                     {type.type.name}
                                 </p>
                             )
@@ -83,7 +91,7 @@ const Card = ({pokemon}) => {
                     <p className="card-text m-1 font-weight-bold">Livello: <span className="font-weight-normal"> {pokemon.base_experience}</span></p>
                     <div className="card-text m-1 font-weight-bold">Abilità: {pokemon.abilities.map( (ability,i) => {
                                                                             return(
-                                                                                <p className="font-italic m-0" style={{color: typecolors[pokemon.types[0].type.name]}}>{ability.ability.name+"\n"}</p>
+                                                                                <p key={i} className="font-italic m-0" style={{color: typecolors[pokemon.types[0].type.name]}}>{ability.ability.name+"\n"}</p>
                                                                             )
                                                                         })}
                     </div>

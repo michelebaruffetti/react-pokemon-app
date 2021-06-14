@@ -10,6 +10,7 @@ function App() {
 
   // set variables for all pokemon data, next+prev button, loading Message, url to start search
   const [pokemonData, setPokemonData] = useState([]);
+  const [cardsState, setCardsState] = useState('all');
   const [nextUrl, setNextUrl] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const urlPokemon = 'https://pokeapi.co/api/v2/pokemon/?limit=9';
@@ -29,15 +30,11 @@ function App() {
   };
 
   const loadingPokemon = async data => {
-    let pokeData = await Promise.all(
-      data.map(async pokemon => {
-        let singlePokemon = await gottaCatchEmAll(pokemon.url);
-        return singlePokemon;
-      })
-    );
+    const pokeData = await Promise.all(data.map( async pokemon => {
+     return await gottaCatchEmAll(pokemon.url);
+    }));
 
     setPokemonData([...pokemonData,...pokeData]);
-   
   }
 
   const showMore = async () => {
@@ -57,8 +54,8 @@ function App() {
         <div className="row justify-content-center">
           <div className="col-12 card-deck ">
             {isLoading? (<Loading/> ) :
-              (pokemonData.map(pokemon => {
-                return <Card key={pokemon.id} pokemon={pokemon}/>; 
+              (pokemonData.map((pokemon,i) => {
+                return <Card key={i} pokemon={pokemon} cardState={cardsState}/>; 
               }))
             }
           </div>

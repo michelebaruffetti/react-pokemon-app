@@ -103,7 +103,7 @@ const Card = ({pokemon, cardState}) => {
                         </div>
                     </div>
                 </div>
-                    {!save ? <button className="btn btn-default mt-1 bg-success text-white capture-button" onClick={()=>storePokemonLocal()}>cattura pokemon!</button> : <button className="btn btn-default mt-1 bg-danger text-white capture-button" onClick={()=>unstorePokemonLocal()}>annulla cattura!</button>} 
+                    {!save ? <button className="btn btn-default mt-1 bg-success text-white capture-button" onClick={()=>storePokemonLocal()}>cattura!</button> : <button className="btn btn-default mt-1 bg-danger text-white capture-button" onClick={()=>unstorePokemonLocal()}>rilascia!</button>} 
             </div>
             {/* card on click */}
             <div className={open ? "card-open btn" : "d-none"} style={setWrapperCardStyle()}>

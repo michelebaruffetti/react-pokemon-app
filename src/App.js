@@ -8,11 +8,13 @@ import Loading from "./components/loading";
 function App() {
   // set variables for all pokemon data, next+prev button, loading Message, url to start search
   const [pokemonData, setPokemonData] = useState([]);
+  const [catchedPokemon, setCatchedPokemon] = useState([]);
+  const [freePokemon, setFreePokemon] = useState([]);
   const [nextUrl, setNextUrl] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [select, setSelect] = useState("all");
+
   const urlPokemon = "https://pokeapi.co/api/v2/pokemon/?limit=9";
-  console.log({ select });
   useEffect(() => {
     async function fetchData() {
       let response = await gottaCatchEmAll(urlPokemon);
@@ -21,6 +23,7 @@ function App() {
       setIsLoading(false);
     }
     fetchData();
+    checkLocal();
   }, []);
 
   const scrollToBottom = () => {
@@ -46,7 +49,20 @@ function App() {
     scrollToBottom();
   };
 
-  const selectHandle = () => {};
+  const checkLocal = () => {
+    if (localStorage.getItem("pokemonCatch")) {
+      let localPokemon = JSON.parse(localStorage.getItem("pokemonCatch"));
+      console.log("local pokemon use effetc", localPokemon);
+      setCatchedPokemon(localPokemon);
+      console.log("APP USE EFFECT", catchedPokemon);
+      let pokemonDifference = pokemonData.filter(
+        (x) => !catchedPokemon.includes(x)
+      );
+      console.log("free pokemons", pokemonDifference);
+      setFreePokemon(pokemonDifference);
+      console.log("freepokemon", freePokemon);
+    }
+  };
 
   return (
     <div className="App">
@@ -59,7 +75,17 @@ function App() {
               <Loading />
             ) : (
               pokemonData.map((pokemon, i) => {
-                return <Card key={i} pokemon={pokemon} />;
+                return (
+                  <Card
+                    key={i}
+                    pokemon={pokemon}
+                    setCatchedPokemon={setCatchedPokemon}
+                    setFreePokemon={setFreePokemon}
+                    catchedPokemon={catchedPokemon}
+                    pokemonData={pokemonData}
+                    freePokemon={freePokemon}
+                  />
+                );
               })
             )}
           </div>

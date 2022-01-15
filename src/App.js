@@ -50,7 +50,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Filters />
+      <Filters setCardsState={setCardsState} />
       <div className="container mt-3">
         <div className="row justify-content-center">
           <div className="col-12 card-deck ">

@@ -1,0 +1,12 @@
+.filters {
+  display: flex;
+  justify-content: flex-end;
+  select {
+    background-color: DodgerBlue;
+    color: white;
+    border: none;
+    padding: 0.4rem;
+    border-radius: 5px;
+    width: 95px;
+  }
+}

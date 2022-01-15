@@ -4,7 +4,6 @@ import Card from "./components/card";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Loading from "./components/loading";
-import Filters from "./components/Filters";
 
 function App() {
   // set variables for all pokemon data, next+prev button, loading Message, url to start search
@@ -50,7 +49,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Filters setCardsState={setCardsState} />
+
       <div className="container mt-3">
         <div className="row justify-content-center">
           <div className="col-12 card-deck ">

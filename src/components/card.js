@@ -288,40 +288,6 @@ const Card = ({ pokemon, cardState }) => {
         </div>
       </div>
     </div>
-
-    // <div className={open ? "card-open btn" : "col-md-6 col-lg-4 mb-3"} style={setWrapperCardStyle()} onClick={()=>{setOpen(!open)}}>
-    //     <div className={open ? "card-modal card m-0 border-dark btn" : "card m-0 border-dark btn"} >
-    //         <img className="card-img-top p-3" src={pokemon.sprites.other.dream_world.front_default} alt="pokemon sprite" style={{height: 15+'rem'}}></img>
-    //         <div className="card-body">
-    //             <h4 className="card-title">{pokemon.name.toUpperCase()}</h4>
-    //             <div className="card-type d-flex justify-content-center mb-2">
-    //                 {pokemon.types.map((type, index) => {
-    //                     return (
-    //                         <p key={index} className="card-text btn m-2 text-uppercase text-white" style={{ backgroundColor: typecolors[type.type.name] }}>
-    //                             {type.type.name}
-    //                         </p>
-    //                     )
-    //                 })}
-    //              </div>
-    //             {open &&<div className="card-info">
-    //             <p className="card-text h5 id-pokemon">#{pokemon.id}</p>
-    //             <p className="card-text m-1 font-weight-bold">Altezza: <span className="font-weight-normal"> {pokemon.height+'0'} centimetri</span></p>
-    //             <p className="card-text m-1 font-weight-bold">Peso: <span className="font-weight-normal"> {pokemon.weight/10} kg</span></p>
-    //             <p className="card-text m-1 font-weight-bold">Livello: <span className="font-weight-normal"> {pokemon.base_experience}</span></p>
-    //             <div className="card-text m-1 font-weight-bold">Abilità: {pokemon.abilities.map( (ability,i) => {
-    //                                                                     return(
-    //                                                                         <p key={i} className="font-italic m-0" style={{color: typecolors[pokemon.types[0].type.name]}}>{ability.ability.name+"\n"}</p>
-    //                                                                     )
-    //                                                                 })}
-    //             </div>
-    //             </div>}
-    //             <div>
-    //                 {!open ? <button className="btn btn-default mt-2" onClick={()=>{setOpen(!open)}}>Mostra Caratteristiche</button> : null}
-    //             </div>
-    //                 {!save ? <button className="btn btn-default mt-1 bg-success text-white" onClick={()=>storePokemonLocal()}>cattura pokemon!</button> : <button className="btn btn-default mt-1 bg-danger text-white" onClick={()=>unstorePokemonLocal()}>annulla cattura!</button>}
-    //         </div>
-    //     </div>
-    // </div>
   );
 };
 

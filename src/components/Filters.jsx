@@ -3,10 +3,11 @@ import { useRef } from "react";
 const Filters = ({ setCardState }) => {
   const selectEl = useRef("all");
   const selectHandler = () => {
-    console.log("select changed");
+    const selectValue = selectEl.current.value;
+    console.log({ selectValue });
   };
   return (
-    <div>
+    <div className="filters container">
       <select
         ref={selectEl}
         onChange={() => selectHandler()}

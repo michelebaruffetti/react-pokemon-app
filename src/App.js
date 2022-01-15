@@ -8,11 +8,11 @@ import Loading from "./components/loading";
 function App() {
   // set variables for all pokemon data, next+prev button, loading Message, url to start search
   const [pokemonData, setPokemonData] = useState([]);
-  const [cardsState, setCardsState] = useState("all");
   const [nextUrl, setNextUrl] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [select, setSelect] = useState("all");
   const urlPokemon = "https://pokeapi.co/api/v2/pokemon/?limit=9";
-
+  console.log({ select });
   useEffect(() => {
     async function fetchData() {
       let response = await gottaCatchEmAll(urlPokemon);
@@ -46,9 +46,11 @@ function App() {
     scrollToBottom();
   };
 
+  const selectHandle = () => {};
+
   return (
     <div className="App">
-      <Header />
+      <Header setSelect={setSelect} />
 
       <div className="container mt-3">
         <div className="row justify-content-center">
@@ -57,9 +59,7 @@ function App() {
               <Loading />
             ) : (
               pokemonData.map((pokemon, i) => {
-                return (
-                  <Card key={i} pokemon={pokemon} cardState={cardsState} />
-                );
+                return <Card key={i} pokemon={pokemon} />;
               })
             )}
           </div>

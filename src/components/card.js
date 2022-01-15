@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import "../styles/app.scss";
 import typecolors from "../services/typecolors";
 
-const Card = ({ pokemon, cardState }) => {
+const Card = ({ pokemon }) => {
   const [open, setOpen] = useState(false);
   const [save, setSave] = useState(false);
+  console.log(pokemon.name, save);
 
   // push pokemon in local storage
   const storePokemonLocal = () => {
@@ -64,12 +65,6 @@ const Card = ({ pokemon, cardState }) => {
   const setWrapperCardStyle = () => {
     return {
       backgroundColor: open ? typecolors[pokemon.types[0].type.name] : null,
-      display:
-        cardState === "all" ||
-        (cardState === "captured" && save) ||
-        (cardState === "not-captured" && !save)
-          ? "block"
-          : "none",
     };
   };
 

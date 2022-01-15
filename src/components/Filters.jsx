@@ -1,10 +1,10 @@
 import { useRef } from "react";
 
-const Filters = ({ setCardState }) => {
+const Filters = ({ setSelect }) => {
   const selectEl = useRef("all");
   const selectHandler = () => {
     const selectValue = selectEl.current.value;
-    console.log({ selectValue });
+    setSelect(selectValue);
   };
   return (
     <div className="filters container">

@@ -1,0 +1,39 @@
+.card-open {
+  position: fixed;
+  max-width: 1200px;
+  padding: 10%;
+  transition: 800ms;
+  z-index: 1000;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+  transform: scale(100%);
+}
+
+.id-pokemon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.card-modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.capture-button {
+  position: absolute;
+  top: 3px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  left: 16px;
+  font-size: 0.9rem;
+}

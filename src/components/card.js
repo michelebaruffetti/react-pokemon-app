@@ -22,11 +22,11 @@ const Card = ({
       localStorage.setItem("pokemonCatch", JSON.stringify(localPokemon));
       setSave(true);
       setCatchedPokemon(localPokemon);
-      console.log("APP USE EFFECT", catchedPokemon);
+      console.log("catched pokemons", catchedPokemon);
       let pokemonDifference = pokemonData.filter(
         (x) => !catchedPokemon.includes(x)
       );
-      console.log("free pokemons", pokemonDifference);
+      console.log("difference", pokemonDifference);
       setFreePokemon(pokemonDifference);
       console.log("freepokemon", freePokemon);
     } else {
@@ -42,11 +42,11 @@ const Card = ({
         localStorage.setItem("pokemonCatch", JSON.stringify(localPokemon));
         setSave(true);
         setCatchedPokemon(localPokemon);
-        console.log("APP USE EFFECT", catchedPokemon);
+        console.log("catched pokemons", catchedPokemon);
         let pokemonDifference = pokemonData.filter(
           (x) => !catchedPokemon.includes(x)
         );
-        console.log("free pokemons", pokemonDifference);
+        console.log("difference", pokemonDifference);
         setFreePokemon(pokemonDifference);
         console.log("freepokemon", freePokemon);
       }
@@ -62,11 +62,11 @@ const Card = ({
       setSave(false);
       console.log("cattura annullata!", save);
       setCatchedPokemon(localPokemon);
-      console.log("APP USE EFFECT", catchedPokemon);
+      console.log("catched pokemons", catchedPokemon);
       let pokemonDifference = pokemonData.filter(
         (x) => !catchedPokemon.includes(x)
       );
-      console.log("free pokemons", pokemonDifference);
+      console.log("difference", pokemonDifference);
       setFreePokemon(pokemonDifference);
       console.log("freepokemon", freePokemon);
     }

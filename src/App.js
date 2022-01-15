@@ -12,7 +12,6 @@ function App() {
   const [freePokemon, setFreePokemon] = useState([]);
   const [nextUrl, setNextUrl] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [select, setSelect] = useState("all");
 
   const urlPokemon = "https://pokeapi.co/api/v2/pokemon/?limit=9";
   useEffect(() => {
@@ -54,11 +53,11 @@ function App() {
       let localPokemon = JSON.parse(localStorage.getItem("pokemonCatch"));
       console.log("local pokemon use effetc", localPokemon);
       setCatchedPokemon(localPokemon);
-      console.log("APP USE EFFECT", catchedPokemon);
+      console.log("catched pokemon", catchedPokemon);
       let pokemonDifference = pokemonData.filter(
         (x) => !catchedPokemon.includes(x)
       );
-      console.log("free pokemons", pokemonDifference);
+      console.log("difference", pokemonDifference);
       setFreePokemon(pokemonDifference);
       console.log("freepokemon", freePokemon);
     }
@@ -66,7 +65,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header setSelect={setSelect} />
+      <Header
+        setPokemonData={setPokemonData}
+        catchedPokemon={catchedPokemon}
+        pokemonData={pokemonData}
+        freePokemon={freePokemon}
+      />
 
       <div className="container mt-3">
         <div className="row justify-content-center">
